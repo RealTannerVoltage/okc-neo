@@ -1,10 +1,8 @@
-**WARNING: This software is no longer actively developed.**
-We will still apply security fixes where reported, and do basic maintenance work, but no new features or will be worked on.
-We will try to consider and merge contributions where possible.
+**OKCNeo is currently in active development.**
 
-# OpenKeychain (for Android)
+# OKCNeo (for Android)
 
-OpenKeychain is an OpenPGP implementation for Android.  
+OKCNeo is an OpenPGP implementation for Android.
 For a more detailed description and installation instructions go to https://www.openkeychain.org .
 
 <a href="https://f-droid.org/repository/browse/?fdid=org.sufficientlysecure.keychain" target="_blank">

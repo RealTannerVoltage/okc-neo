@@ -6,7 +6,16 @@
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").
     -->
 
-    <string name="app_name">"OpenKeychain"</string>
+    <string name="app_name">"OKCNeo"</string>
+    <string name="home_eyebrow">"OPENPGP FOR ANDROID"</string>
+    <string name="home_headline">"Private keys.\nClear control."</string>
+    <string name="home_summary">"A focused workspace for protecting messages, files, and the keys behind them."</string>
+    <string name="home_active_development">"ACTIVE DEVELOPMENT"</string>
+    <string name="home_actions">"Your workspace"</string>
+    <string name="home_feature_tag">"OPENPGP"</string>
+    <string name="home_keys_detail">"Manage keys"</string>
+    <string name="home_backup_detail">"Backup and restore"</string>
+    <string name="home_apps_detail">"Review connected apps"</string>
 
     <!-- title -->
     <string name="title_encrypt_text">"Encrypt"</string>

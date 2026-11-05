@@ -41,7 +41,7 @@ import org.sufficientlysecure.keychain.ui.base.BaseSecurityTokenActivity;
 import org.sufficientlysecure.keychain.util.FabContainer;
 import org.sufficientlysecure.keychain.util.Preferences;
 
-public class MainActivity extends BaseSecurityTokenActivity implements FabContainer {
+public class MainActivity extends BaseSecurityTokenActivity implements FabContainer, NeoHomeFragment.Listener {
 
     static final int ID_KEYS = 1;
     static final int ID_ENCRYPT_DECRYPT = 2;
@@ -138,7 +138,7 @@ public class MainActivity extends BaseSecurityTokenActivity implements FabContai
             result.createNotify(this).show();
         }
 
-        onKeysSelected();
+        onDashboardSelected();
 
         if (data != null && data.hasExtra(EXTRA_INIT_FRAG)) {
             // initialize FragmentLayout with KeyListFragment at first
@@ -186,6 +186,30 @@ public class MainActivity extends BaseSecurityTokenActivity implements FabContai
         ft.commit();
     }
 
+    private void onDashboardSelected() {
+        mToolbar.setTitle(R.string.app_name);
+        mDrawer.setSelection(-1, false);
+        setFragment(new NeoHomeFragment());
+    }
+
+    @Override
+    public void onHomeAction(NeoHomeFragment.HomeAction action) {
+        switch (action) {
+            case KEYS:
+                onKeysSelected();
+                break;
+            case ENCRYPT_DECRYPT:
+                onEnDecryptSelected();
+                break;
+            case APPS:
+                onAppsSelected();
+                break;
+            case BACKUP:
+                onBackupSelected();
+                break;
+        }
+    }
+
     public void onKeysSelected() {
         mToolbar.setTitle(R.string.app_name);
         mDrawer.setSelection(ID_KEYS, false);
@@ -228,10 +252,11 @@ public class MainActivity extends BaseSecurityTokenActivity implements FabContai
             mDrawer.closeDrawer();
         } else {
             FragmentManager fragmentManager = getSupportFragmentManager();
-            if (fragmentManager.findFragmentById(R.id.main_fragment_container) instanceof KeyListFragment) {
+            Fragment currentFragment = fragmentManager.findFragmentById(R.id.main_fragment_container);
+            if (currentFragment instanceof KeyListFragment || currentFragment instanceof NeoHomeFragment) {
                 super.onBackPressed();
             } else {
-                onKeysSelected();
+                onDashboardSelected();
             }
         }
     }
